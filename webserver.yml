@@ -1,0 +1,12 @@
+--- #gathering facts playbook
+ - hosts: all
+   user: root
+   become: yes
+   connection: ssh 
+   gather_facts: yes
+
+   vars:
+     pkg: apache2 
+   tasks:
+     - name: install "{{pkg}}"
+       action: apt name='{{pkg}}' state=present
